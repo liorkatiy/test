@@ -1,0 +1,28 @@
+#editor {
+  position: fixed;
+  background-color: aliceblue;
+  border: 1px;
+  border-style: dashed;
+  top: 40%;
+  left: 40%;
+}
+
+#back {
+  display: none;
+  position: fixed;
+  height: 100000px;
+  width: 100000px;
+}
+
+td {
+  height: 400px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.job {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: xx-large;
+}
