@@ -1,32 +1,13 @@
-     static void Main(string[] args)
-        {
-            var md =GetMetaData("test.cs");
-            var myEnum = md.DefinedTypes.Where(type => type.IsEnum && type.Name == "A").FirstOrDefault();
-            Array t = Enum.GetValues(myEnum);
-            foreach (var item in t)
-            {
-                string name = item.ToString();
-                int val = (int)item;
-            }
-            
-        }
-
-        static Assembly GetMetaData(string fileName)
-        {
-            CSharpCodeProvider codeProvider = new CSharpCodeProvider();
-            var test = codeProvider.CompileAssemblyFromFile(
-                new System.CodeDom.Compiler.CompilerParameters() {
-                    GenerateExecutable = false, GenerateInMemory = true,WarningLevel=0 },
-                fileName);
-            if (test.Errors.Count > 0)
-            {
-                string[] fileLines = File.ReadAllLines(fileName);
-                foreach (CompilerError error in test.Errors)
-                {
-                    fileLines[error.Line - 1] = "";
-                }
-                File.WriteAllLines(fileName, fileLines);
-                return GetMetaData(fileName);
-            }
-            return test.CompiledAssembly;
-        }
+<form>
+  <input id="date" type="date" required />
+  <input type="submit">
+  <script>
+    (() => {
+      const dateInput = document.getElementById("date");
+      const dateMinus13 = new Date();
+      dateMinus13.setFullYear(dateMinus13.getFullYear() - 13);
+      const dateString = dateMinus13.toISOString().split("T")[0];
+      dateInput.min = dateString;
+      dateInput.value = dateString;
+    })();
+  </script>
